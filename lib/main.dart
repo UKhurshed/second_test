@@ -1,79 +1,16 @@
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:second_test/app.dart';
 
-import 'file:///C:/Users/User/Documents/Flutter%20Projects/second_test/second_test/lib/screen/webView/webView_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
-// import 'package:onesignal_flutter/onesignal_flutter.dart';
-
-void main() {
-  runApp(MaterialApp(
-    title: 'Dynamic Links Example',
-    routes: <String, WidgetBuilder>{
-      '/': (BuildContext context) => Download(),
-    },
-  ));
-}
-
-class Download extends StatefulWidget {
-  @override
-  _DownloadState createState() => _DownloadState();
-}
-
-class _DownloadState extends State<Download> {
-  @override
-  void initState() {
-    super.initState();
-    fetchLinkData();
-  }
-
-  Future<SharedPreferences> preferences = SharedPreferences.getInstance();
-
-  void fetchLinkData() async {
-    // FirebaseDynamicLinks.getInitialLInk does a call to firebase to get us the real link because we have shortened it.
-    var link = await FirebaseDynamicLinks.instance.getInitialLink();
-    SharedPreferences prefs = await preferences;
-    if (prefs.getString("dynamic") != null) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  WebViewScreen(link: prefs.getString("dynamic"))));
-    }
-    // This link may exist if the app was opened fresh so we'll want to handle it the same way onLink will.
-    handleLinkData(link, prefs);
-
-    // This will handle incoming links if the application is already opened
-    FirebaseDynamicLinks.instance.onLink(
-        onSuccess: (PendingDynamicLinkData dynamicLink) async {
-      handleLinkData(dynamicLink, prefs);
-    });
-  }
-
-  void handleLinkData(
-      PendingDynamicLinkData data, SharedPreferences pref) async {
-    final Uri uri = data?.link;
-    if (pref.getString("dynamic") == null) {
-      if (uri != null) {
-        pref.setString("dynamic", uri.toString());
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => WebViewScreen(link: uri.toString())));
-      }
-    } else {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  WebViewScreen(link: pref.getString("dynamic"))));
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: CircularProgressIndicator()),
-    );
-  }
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  //24769a33-7dc4-41f7-9e46-07ee01cc2f40
+  //1a817192-b9c4-4249-a875-79bf34846915
+  OneSignal.shared.init('1a817192-b9c4-4249-a875-79bf34846915', iOSSettings: null);
+  OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
+  await Firebase.initializeApp();
+  runApp(App());
 }

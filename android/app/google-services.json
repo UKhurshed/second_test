@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1075723334278",
-    "firebase_url": "https://second-test-11eeb.firebaseio.com",
-    "project_id": "second-test-11eeb",
-    "storage_bucket": "second-test-11eeb.appspot.com"
+    "project_number": "1005960555605",
+    "firebase_url": "https://happyflow-1cbe8.firebaseio.com",
+    "project_id": "happyflow-1cbe8",
+    "storage_bucket": "happyflow-1cbe8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1075723334278:android:768c7b853cdf2f0365d707",
+        "mobilesdk_app_id": "1:1005960555605:android:ba54f0d3d65ad0e6bcb8dc",
         "android_client_info": {
-          "package_name": "com.example.second_test"
+          "package_name": "com.dkitspaoe.diegamesj"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1075723334278-hrgcq50tn24k6b21k4ct0l44r3i914bf.apps.googleusercontent.com",
+          "client_id": "1005960555605-a4233vvoij10baptkq835qg7k9fkib7l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBI5l7Vn8ViVfQapwbR9-1LTUmdBy8zTuc"
+          "current_key": "AIzaSyDWpTYfdTpADIRdcIa8AwCNwtyVqKGO_YY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1075723334278-hrgcq50tn24k6b21k4ct0l44r3i914bf.apps.googleusercontent.com",
+              "client_id": "1005960555605-a4233vvoij10baptkq835qg7k9fkib7l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

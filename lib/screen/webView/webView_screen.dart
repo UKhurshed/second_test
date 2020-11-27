@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +33,7 @@ class _WebViewScreen extends State<WebViewScreen> {
           // Are you sure?
           content: Text('Do you want exit app ? '),
           // Do you want to go back?
-          actions:[
+          actions: [
             FlatButton(
               onPressed: () {
                 Navigator.of(context).pop(false);
@@ -59,18 +62,18 @@ class _WebViewScreen extends State<WebViewScreen> {
     }
   }
 
-  WebViewController webView;
+  InAppWebViewController webView;
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        child: WebView(
-          initialUrl: _link,
-          onWebViewCreated: (WebViewController controller) {
-            webView = controller;
-          },
-          javascriptMode: JavascriptMode.unrestricted,
-
+        child: SafeArea(
+          child: InAppWebView(
+            initialUrl: _link,
+            onWebViewCreated: (InAppWebViewController controller){
+              webView = controller;
+            },
+          )
         ),
         onWillPop: _onBack);
   }
@@ -80,3 +83,16 @@ class _WebViewScreen extends State<WebViewScreen> {
     super.initState();
   }
 }
+
+/*
+WebView(
+            initialUrl: _link,
+            onWebViewCreated: (WebViewController controller) {
+              webView = controller;
+            },
+            javascriptMode: JavascriptMode.unrestricted,
+            gestureRecognizers: Set()
+              ..add(Factory<TapGestureRecognizer>(
+                      () => TapGestureRecognizer())),
+          ),
+ */

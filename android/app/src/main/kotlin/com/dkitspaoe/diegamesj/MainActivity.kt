@@ -1,4 +1,4 @@
-package com.example.second_test
+package com.dkitspaoe.diegamesj
 
 import io.flutter.embedding.android.FlutterActivity
 
