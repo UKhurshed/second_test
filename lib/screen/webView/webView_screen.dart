@@ -1,8 +1,5 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 
 class WebViewScreen extends StatefulWidget {
@@ -83,16 +80,3 @@ class _WebViewScreen extends State<WebViewScreen> {
     super.initState();
   }
 }
-
-/*
-WebView(
-            initialUrl: _link,
-            onWebViewCreated: (WebViewController controller) {
-              webView = controller;
-            },
-            javascriptMode: JavascriptMode.unrestricted,
-            gestureRecognizers: Set()
-              ..add(Factory<TapGestureRecognizer>(
-                      () => TapGestureRecognizer())),
-          ),
- */

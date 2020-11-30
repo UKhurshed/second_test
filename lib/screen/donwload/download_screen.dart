@@ -54,14 +54,15 @@ class _DownloadScreenState extends State<DownloadScreen> {
           print("Link: ${event['link']}");
           fireStoreLink = event['link'];
           if (fireStoreLink.isEmpty || fireStoreLink == null) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => News()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => News()));
           } else {
             String decodeLink = utf8.decode(base64.decode(event['link']));
             print("DecodeLink: $decodeLink");
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewScreen(link: 'https://google.ru')));
+                    builder: (context) => WebViewScreen(link: decodeLink)));
           }
         } catch (error) {
           print('Error:$error');

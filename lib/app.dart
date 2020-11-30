@@ -14,22 +14,12 @@ class App extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    return GestureDetector(
-      onTap: (){
-        print('Tap App Gesture');
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          FocusManager.instance.primaryFocus.unfocus();
-        }
-      },
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'LuckyCash',
-        home: BlocProvider(
-          create: (context) => NewsCubit(NewsRepository()),
-          child: DownloadScreen(),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'LuckyCash',
+      home: BlocProvider(
+        create: (context) => NewsCubit(NewsRepository()),
+        child: DownloadScreen(),
       ),
     );
   }
